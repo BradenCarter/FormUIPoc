@@ -11,6 +11,7 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        pageBackground: "#2A363B", // Added new background color
       },
     },
   },
