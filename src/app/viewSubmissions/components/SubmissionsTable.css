@@ -1,0 +1,7 @@
+.custom-row {
+    background-color: #BDC3C7;
+}
+
+.custom-row:hover {
+    background-color: #BDC3C7; /* Keep the same background color on hover */
+}
