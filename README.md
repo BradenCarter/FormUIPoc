@@ -31,11 +31,43 @@ NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your-public-key
 # Add any additional environment variables here
 ```
 
-> **Note**: This project uses EmailJS for handling email notifications. To enable email functionality, you'll need to:
-> 1. Sign up for an [EmailJS account](https://www.emailjs.com/)
-> 2. Create an email service and template
-> 3. Copy your service ID, template ID, and public key
-> 4. Add them to your `.env.local` file as shown above
+### EmailJS Setup
+This project uses EmailJS for handling email notifications. Follow these steps to set up email functionality:
+
+1. **Create an EmailJS Account**
+   - Sign up for an account at [EmailJS](https://www.emailjs.com/)
+   - Verify your email address
+
+2. **Create an Email Service**
+   - Log in to your EmailJS dashboard
+   - Go to "Email Services" tab
+   - Click "Add New Service"
+   - Choose your email provider (Gmail, Outlook, etc.)
+   - Follow the authentication steps for your chosen provider
+
+3. **Create an Email Template**
+   - Go to the "Email Templates" tab
+   - Click "Create New Template"
+   - Design your email template using the visual editor
+   - Use the following variables in your template:
+     - `{{firstName}}`: Enrollee's first name
+     - `{{lastName}}`: Enrollee's last name
+     - `{{email}}`: Enrollee's email address
+     - `{{contactNumber}}`: Enrollee's contact number
+     - `{{dob}}`: Enrollee's date of birth
+     - `{{userSubId}}`: Member ID
+     - `{{gmEmail}}`: Recipient email address
+
+4. **Get Your Credentials**
+   - Service ID: Found in the "Email Services" tab next to your service
+   - Template ID: Found in the "Email Templates" tab next to your template
+   - Public Key: Found in Account > API Keys
+
+5. **Update Environment Variables**
+   - Copy these credentials to your `.env.local` file
+   - Add the recipient email address as `GM_EMAIL`
+
+> **Note**: Make sure to never commit your `.env.local` file to version control.
 
 ### Installation
 ```bash

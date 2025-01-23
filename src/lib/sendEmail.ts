@@ -1,6 +1,9 @@
 import emailjs from 'emailjs-com';
+import { z } from 'zod';
+import { FinalStepSchema } from './validationSchemas';
 
-export const sendEmail = async (formData: any) => {
+export const sendEmail = async (formData: z.infer<typeof FinalStepSchema>) => {
+  FinalStepSchema.parse(formData); // Validate formData against FinalStepSchema
   // Customize service ID, template ID, user ID
   const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
   const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
@@ -19,7 +22,10 @@ export const sendEmail = async (formData: any) => {
   try {
     const response = await emailjs.send(serviceId, templateId, templateParams, userId);
     return response;
-  } catch (error: any) {
-    throw new Error(error.message || 'Failed to send email');
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
+    throw new Error('Failed to send email');
   }
 };
