@@ -9,9 +9,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
+        background: "#00FFFF", // Updated background color to cyan
         foreground: "var(--foreground)",
-        pageBackground: "#2A363B", // Added new background color
       },
     },
   },

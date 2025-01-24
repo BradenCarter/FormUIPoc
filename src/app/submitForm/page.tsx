@@ -45,9 +45,9 @@ const SubmitForm = () => {
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
-        const formData: SubmissionPost = { userSubId, firstName, lastName, email };
-        submitForm(formData);
         try {
+            const formData: SubmissionPost = { formId: 'generic', userId: userSubId, firstName, lastName, email };
+            submitForm(formData);
 
         } catch (error) {
             console.error('Error submitting form:', error);
@@ -103,11 +103,11 @@ const SubmitForm = () => {
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
-                        <Button 
-                            type="submit" 
-                            variant="contained" 
-                            color="primary" 
-                            size="large" 
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            size="large"
                             style={{ height: '3rem', marginTop: '16px' }}
                         >
                             Submit
