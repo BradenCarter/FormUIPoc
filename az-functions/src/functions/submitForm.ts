@@ -12,9 +12,12 @@ export async function submitForm(request: HttpRequest, context: InvocationContex
     if (!body.userId) {
         return { status: 400, body: `userId is required` };
     }
+
+
     await client.database(process.env.COSMOS_DB_DATABASE).container(process.env.COSMOS_DB_CONTAINER)
         .items.create({
             submissionId: uuidv4(),
+            submissionDate: new Date().toISOString(),
             ...body
         });
     
