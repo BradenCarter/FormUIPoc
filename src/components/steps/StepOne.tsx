@@ -24,7 +24,7 @@ const StepOne: React.FC<StepOneProps> = ({ nextStep }) => {
         <input
           {...register('fullName')}
           placeholder="John Doe"
-          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
+          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 text-gray-900 ${
             errors.fullName
               ? 'border-error focus:ring-error/20'
               : 'border-neutral/20 focus:ring-primary/20 focus:border-primary'
@@ -40,7 +40,7 @@ const StepOne: React.FC<StepOneProps> = ({ nextStep }) => {
         <input
           type="date"
           {...register('dob')}
-          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
+          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 text-gray-900 ${
             errors.dob
               ? 'border-error focus:ring-error/20'
               : 'border-neutral/20 focus:ring-primary/20 focus:border-primary'
@@ -57,7 +57,7 @@ const StepOne: React.FC<StepOneProps> = ({ nextStep }) => {
           type="email"
           {...register('email')}
           placeholder="john@example.com"
-          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
+          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 text-gray-900 ${
             errors.email
               ? 'border-error focus:ring-error/20'
               : 'border-neutral/20 focus:ring-primary/20 focus:border-primary'
@@ -74,7 +74,7 @@ const StepOne: React.FC<StepOneProps> = ({ nextStep }) => {
           type="tel"
           {...register('contactNumber')}
           placeholder="(123) 456-7890"
-          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
+          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 text-gray-900 ${
             errors.contactNumber
               ? 'border-error focus:ring-error/20'
               : 'border-neutral/20 focus:ring-primary/20 focus:border-primary'

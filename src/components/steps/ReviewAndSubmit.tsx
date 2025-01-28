@@ -3,10 +3,12 @@ import { useFormContext } from 'react-hook-form';
 
 interface ReviewAndSubmitProps {
   prevStep: () => void;
+  onSubmit: (data: { [key: string]: string }) => void;
 }
 
-const ReviewAndSubmit: React.FC<ReviewAndSubmitProps> = ({ prevStep }) => {
+const ReviewAndSubmit: React.FC<ReviewAndSubmitProps> = ({ prevStep, onSubmit }) => {
   const {
+    handleSubmit,
     getValues,
     register,
     formState: { errors },
@@ -90,6 +92,11 @@ const ReviewAndSubmit: React.FC<ReviewAndSubmitProps> = ({ prevStep }) => {
         </button>
         <button
           type="submit"
+          onClick={handleSubmit((data) => {
+            const values = getValues();
+            const formData = { ...values, ...data };
+            handleSubmit(() => onSubmit(formData))();
+          })}
           className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary-focus transition-colors"
         >
           Submit Form

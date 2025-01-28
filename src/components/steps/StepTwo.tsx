@@ -25,7 +25,7 @@ const StepTwo: React.FC<StepTwoProps> = ({ nextStep, prevStep }) => {
         <input
           type="date"
           {...register('dueDate')}
-          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
+          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 text-gray-900 ${
             errors.dueDate
               ? 'border-error focus:ring-error/20'
               : 'border-neutral/20 focus:ring-primary/20 focus:border-primary'
@@ -40,7 +40,7 @@ const StepTwo: React.FC<StepTwoProps> = ({ nextStep, prevStep }) => {
         <label className="block text-neutral font-medium">Current Trimester</label>
         <select
           {...register('trimester')}
-          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
+          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 text-gray-900 ${
             errors.trimester
               ? 'border-error focus:ring-error/20'
               : 'border-neutral/20 focus:ring-primary/20 focus:border-primary'
@@ -73,7 +73,7 @@ const StepTwo: React.FC<StepTwoProps> = ({ nextStep, prevStep }) => {
           {...register('healthConcerns')}
           placeholder="Please list any health concerns or conditions..."
           rows={4}
-          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
+          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 text-gray-900 ${
             errors.healthConcerns
               ? 'border-error focus:ring-error/20'
               : 'border-neutral/20 focus:ring-primary/20 focus:border-primary'

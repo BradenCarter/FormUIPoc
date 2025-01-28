@@ -15,22 +15,32 @@ export default function Home() {
         <Typography variant="body1" gutterBottom>
           Please choose an option below:
         </Typography>
-        <Button
-          variant="contained"
-          color="primary"
-          style={{ marginRight: '10px', height: '3rem', fontSize: '1rem' }}
-          onClick={() => router.push('/viewSubmissions')}
-        >
-          View Submitted Forms
-        </Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          style={{height: '3rem', fontSize: '1rem' }}
-          onClick={() => router.push('/submitForm')}
-        >
-          Start Form Submission
-        </Button>
+        <Box display="flex" justifyContent="space-between" flexWrap="wrap" gap={2}>
+          <Button
+            variant="contained"
+            color="primary"
+            style={{ height: '3rem', fontSize: '1rem' }}
+            onClick={() => router.push('/viewSubmissions')}
+          >
+            View Submitted Forms
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            style={{ height: '3rem', fontSize: '1rem' }}
+            onClick={() => router.push('/genericForm')}
+          >
+            Start Form Submission
+          </Button>
+          <Button
+            variant="contained"
+            color="success"
+            style={{ height: '3rem', fontSize: '1rem' }}
+            onClick={() => router.push('/healthyMaternity')}
+          >
+            Healthy Maternity
+          </Button>
+        </Box>
       </Box>
     </Container>
   );

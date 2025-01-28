@@ -1,7 +1,7 @@
 'use client';
 import { SubmissionPost } from '@/app/models/Submission';
 import React, { useState } from 'react';
-import { submitForm } from './actions/submitForm';
+import { submitForm } from '../actions/submitForm';
 import { TextField, Button, Container, Typography, Box } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -45,7 +45,7 @@ const SubmitForm = () => {
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
-        const formData: SubmissionPost = { userSubId, firstName, lastName, email };
+        const formData: SubmissionPost = { formId: 'generic', userId: userSubId, firstName, lastName, email };
         submitForm(formData);
         try {
 

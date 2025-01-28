@@ -24,7 +24,7 @@ const StepThree: React.FC<StepThreeProps> = ({ nextStep, prevStep }) => {
         <label className="block text-neutral font-medium">Member ID</label>
         <input
           {...register('memberId')}
-          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
+          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 text-gray-900 ${
             errors.memberId
               ? 'border-error focus:ring-error/20'
               : 'border-neutral/20 focus:ring-primary/20 focus:border-primary'
@@ -39,7 +39,7 @@ const StepThree: React.FC<StepThreeProps> = ({ nextStep, prevStep }) => {
         <label className="block text-neutral font-medium">Plan Type</label>
         <select
           {...register('planType')}
-          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
+          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 text-gray-900 ${
             errors.planType
               ? 'border-error focus:ring-error/20'
               : 'border-neutral/20 focus:ring-primary/20 focus:border-primary'
@@ -59,7 +59,7 @@ const StepThree: React.FC<StepThreeProps> = ({ nextStep, prevStep }) => {
         <label className="block text-neutral font-medium">Primary Physician</label>
         <input
           {...register('physicianName')}
-          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
+          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 text-gray-900 ${
             errors.physicianName
               ? 'border-error focus:ring-error/20'
               : 'border-neutral/20 focus:ring-primary/20 focus:border-primary'
