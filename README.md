@@ -1,24 +1,244 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Healthy Maternity Enrollment Form
 
-## Getting Started
+## Project Purpose
+A modern, user-friendly multi-step enrollment form for maternity program registration. Built with Next.js and TypeScript, featuring a clean and accessible interface that guides users through the enrollment process with ease.
 
-First, run the development server:
+### Key Features
+- 🎯 Multi-step form with progress tracking
+- ✨ Modern, responsive UI with custom Tailwind styling
+- ✅ Real-time form validation using React Hook Form + Yup
+- 📧 Automated email notifications on form submission
+- 🔒 Type-safe development with TypeScript
+- 🧪 Comprehensive test coverage with Jest and Cypress
 
+## Setup Instructions
+
+### Prerequisites
+- Node.js 18.x or higher
+- npm/yarn/pnpm
+
+### Environment Variables
+Create a `.env.local` file in the root directory with:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# General Configuration
+GM_EMAIL=your-email@example.com
+
+# EmailJS Configuration (Required for email functionality)
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=your-service-id
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your-template-id
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your-public-key
+
+# Add any additional environment variables here
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### EmailJS Setup
+This project uses EmailJS for handling email notifications. Follow these steps to set up email functionality:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Create an EmailJS Account**
+   - Sign up for an account at [EmailJS](https://www.emailjs.com/)
+   - Verify your email address
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Create an Email Service**
+   - Log in to your EmailJS dashboard
+   - Go to "Email Services" tab
+   - Click "Add New Service"
+   - Choose your email provider (Gmail, Outlook, etc.)
+   - Follow the authentication steps for your chosen provider
+
+3. **Create an Email Template**
+   - Go to the "Email Templates" tab
+   - Click "Create New Template"
+   - Design your email template using the visual editor
+   - Use the following variables in your template:
+     - `{{firstName}}`: Enrollee's first name
+     - `{{lastName}}`: Enrollee's last name
+     - `{{email}}`: Enrollee's email address
+     - `{{contactNumber}}`: Enrollee's contact number
+     - `{{dob}}`: Enrollee's date of birth
+     - `{{userSubId}}`: Member ID
+     - `{{gmEmail}}`: Recipient email address
+
+4. **Get Your Credentials**
+   - Service ID: Found in the "Email Services" tab next to your service
+   - Template ID: Found in the "Email Templates" tab next to your template
+   - Public Key: Found in Account > API Keys
+
+5. **Update Environment Variables**
+   - Copy these credentials to your `.env.local` file
+   - Add the recipient email address as `GM_EMAIL`
+
+> **Note**: Make sure to never commit your `.env.local` file to version control.
+
+### Installation
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
+```
+
+The application will be available at [http://localhost:3000](http://localhost:3000).
+
+## Testing
+
+The project uses a comprehensive testing strategy combining unit tests (Jest + React Testing Library) and end-to-end tests (Cypress).
+
+### Unit Tests
+
+Unit tests are written using Jest and React Testing Library, focusing on component and utility function testing.
+
+```bash
+# Run all unit tests
+npm test
+
+# Run tests in watch mode (useful during development)
+npm run test:watch
+
+# Generate coverage report
+npm run test:coverage
+```
+
+#### Test Structure
+- `__tests__/unit/` - Contains all unit tests
+- `jest.setup.ts` - Jest configuration and global test setup
+- Coverage reports are generated in the `coverage/` directory
+
+#### Writing Unit Tests
+- Use React Testing Library for component testing
+- Follow the AAA pattern (Arrange, Act, Assert)
+- Mock external dependencies using Jest's mocking capabilities
+- Focus on testing behavior rather than implementation details
+
+Example:
+```typescript
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import StepOne from '@/components/steps/StepOne';
+
+describe('StepOne', () => {
+  it('validates required fields', async () => {
+    render(<StepOne />);
+    await userEvent.click(screen.getByText('Next'));
+    expect(screen.getByText('Full name is required')).toBeInTheDocument();
+  });
+});
+```
+
+### End-to-End Tests
+
+E2E tests use Cypress to test the complete application flow from a user's perspective.
+
+```bash
+# Open Cypress Test Runner (interactive mode)
+npm run cypress
+
+# Run Cypress tests headlessly (CI mode)
+npm run cypress:headless
+
+# Run E2E tests with dev server
+npm run test:e2e
+
+# Run E2E tests headlessly with dev server
+npm run test:e2e:headless
+```
+
+#### Test Structure
+- `cypress/e2e/` - Contains all E2E test files
+- `cypress/support/` - Custom commands and global configurations
+- `cypress.config.ts` - Cypress configuration
+
+#### Key Test Scenarios
+1. Form Navigation
+   - Step navigation (Next/Previous)
+   - Data persistence between steps
+   - Form validation
+
+2. Form Submission
+   - Complete form submission
+   - Error handling
+   - Success confirmation
+
+3. Accessibility
+   - Keyboard navigation
+   - Screen reader compatibility
+   - ARIA attributes
+
+4. Data Validation
+   - Required fields
+   - Format validation
+   - Error messages
+
+#### Custom Commands
+Cypress custom commands are available for common operations:
+```typescript
+// Fill out personal information
+cy.fillPersonalInformation();
+
+// Fill out pregnancy information
+cy.fillPregnancyInformation();
+
+// Fill out insurance information
+cy.fillInsuranceInformation();
+```
+
+### Continuous Integration
+
+Tests are run automatically in the CI pipeline:
+1. Unit tests with coverage reporting
+2. E2E tests in headless mode
+3. Type checking and linting
+
+### Code Coverage
+
+Coverage reports are generated for:
+- Unit tests (Jest)
+- Integration tests
+- E2E tests (optional)
+
+Target coverage metrics:
+- Statements: >80%
+- Branches: >80%
+- Functions: >80%
+- Lines: >80%
+
+## Project Structure
+```
+src/
+├── app/                  # Next.js app directory
+├── components/          
+│   ├── steps/           # Form step components
+│   └── ui/              # Reusable UI components
+├── lib/                 # Utilities and validation schemas
+└── styles/              # Global styles and Tailwind config
+```
+
+## Styling Guide
+The project uses a custom Tailwind configuration with a specific color palette:
+- Primary: #005EB9 (Main actions, buttons)
+- Secondary: #5DC1FD (Supporting elements)
+- Neutral: #333333 (Text, borders)
+- Success: #508316 (Confirmation messages)
+- Error: #EB001B (Error states)
+- Warning: #FFA500 (Warning messages)
+
+Components are styled using Tailwind CSS classes following these color schemes for consistency.
+
+## Contributing
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## License
+[Add your license information here]
 
 ## Learn More
 

@@ -10,7 +10,5 @@ export type Submission = {
 export type SubmissionPost = {
     formId: string;
     userId: string;
-    firstName: string;
-    lastName: string;
-    email: string;
+    [key: string]: unknown; // Allows for any number of other variables with data
 }
