@@ -45,10 +45,10 @@ const SubmitForm = () => {
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
-        const formData: SubmissionPost = { formId: 'generic', userId: userSubId, firstName, lastName, email };
-        submitForm(formData);
         try {
-
+            const formData: SubmissionPost = { formId: 'generic', userId: userSubId, firstName, lastName, email };
+            submitForm(formData);
+            alert.call('Form submitted successfully');
         } catch (error) {
             console.error('Error submitting form:', error);
         }
