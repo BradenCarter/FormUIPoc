@@ -2,5 +2,7 @@
     "appService.zipIgnorePattern": [
         "node_modules{,/**}",
         ".vscode{,/**}"
-    ]
+    ],
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/db3df258-5dc3-4524-a0d6-156244cb75d5/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/formarchpoc-bcqm",
+    "appService.deploySubpath": "."
 }

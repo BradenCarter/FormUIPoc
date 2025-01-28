@@ -8,7 +8,8 @@ export type Submission = {
 }
 
 export type SubmissionPost = {
-    userSubId: string;
+    formId: string;
+    userId: string;
     firstName: string;
     lastName: string;
     email: string;
